@@ -22,7 +22,6 @@ struct PCB {
     vector<int> logicalMemory; // instructions and associated data
 };
 
-// ------------------------- Scheduler Structures -------------------------
 struct IORequest {
     int startAddress;   // block start address of the process in mainMemory
     int dataPointer;    // pointer to the next data word to be used
@@ -34,7 +33,6 @@ struct ReadyItem {
     int dataPointer;    // pointer to next data word
 };
 
-// ------------------------- Print Queue Functions -------------------------
 void printReadyQueue(const queue<ReadyItem> &readyQueue) {
     queue<ReadyItem> temp = readyQueue;
     while (!temp.empty()) {
@@ -76,7 +74,6 @@ void printQueues(const queue<PCB> &newJobQueue,
     printIOQueue(ioQueue);
 }
 
-// ------------------------- MemoryBlock STRUCT -------------------------
 struct MemoryBlock {
     int processID;       // -1 if free, otherwise the process ID
     int startAddress;    // starting address in mainMemory
@@ -89,7 +86,6 @@ bool operator==(const MemoryBlock &a, const MemoryBlock &b) {
         && a.size         == b.size;
 }
 
-// ------------------------- MemoryManager CLASS ------------------------- 
 class MemoryManager {
 public:
     MemoryManager(int maxMem)
@@ -265,7 +261,6 @@ private:
         }
     }
 };
-// ------------------------- CPU CLASS -------------------------
 class CPU {
 public:
     CPU(int timeSlice, int numProcs)
@@ -439,7 +434,6 @@ private:
     vector<int> startTimes;
 };
 
-// ------------------------- MAIN Function -------------------------
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
